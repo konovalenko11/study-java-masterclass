@@ -49,5 +49,9 @@ public class Main {
 
         long myBigLongValue = 2_147_483_648L;
 
+        int myTotalIntValue = myMinIntValue / 2;
+        byte myTotalByteValue = (byte) (myMinByteValue / 2);
+        short myTotalShortValue = (short) (myMinShortValue / 2);
+
     }
 }
