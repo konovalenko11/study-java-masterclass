@@ -40,10 +40,10 @@ public class TeenNumberChecker {
     }
 
     // Alternative version with unlimited number of parameters.
-//    public static boolean hasTeen(int... args) {
-//        for (int age:args){
-//            if (isTeen(age)) return true;
-//        }
-//        return false;
-//    }
+    public static boolean hasTeen(int... args) {
+        for (int age:args){
+            if (isTeen(age)) return true;
+        }
+        return false;
+    }
 }
