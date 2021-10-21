@@ -85,6 +85,22 @@ import java.util.HashMap;
 
 public class NumberToWords {
 
+    private static final HashMap<Integer, String> DIGIT_WORDS =
+            new HashMap<Integer, String>();
+
+    static {
+        DIGIT_WORDS.put(1, "One");
+        DIGIT_WORDS.put(2, "Two");
+        DIGIT_WORDS.put(3, "Three");
+        DIGIT_WORDS.put(4, "Four");
+        DIGIT_WORDS.put(5, "Five");
+        DIGIT_WORDS.put(6, "Six");
+        DIGIT_WORDS.put(7, "Seven");
+        DIGIT_WORDS.put(8, "Eight");
+        DIGIT_WORDS.put(9, "Nine");
+        DIGIT_WORDS.put(0, "Zero");
+    }
+
     public static void main(String[] args) {
         System.out.println(getDigitCount(100));
         System.out.println(reverse(100));
@@ -116,18 +132,6 @@ public class NumberToWords {
             System.out.println("Invalid Value");
             return;
         }
-
-        HashMap<Integer, String> DIGIT_WORDS = new HashMap<Integer, String>();
-        DIGIT_WORDS.put(1, "One");
-        DIGIT_WORDS.put(2, "Two");
-        DIGIT_WORDS.put(3, "Three");
-        DIGIT_WORDS.put(4, "Four");
-        DIGIT_WORDS.put(5, "Five");
-        DIGIT_WORDS.put(6, "Six");
-        DIGIT_WORDS.put(7, "Seven");
-        DIGIT_WORDS.put(8, "Eight");
-        DIGIT_WORDS.put(9, "Nine");
-        DIGIT_WORDS.put(0, "Zero");
 
         int numberLength = getDigitCount(number);
         int checkNumber = reverse(number);
