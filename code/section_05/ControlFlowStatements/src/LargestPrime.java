@@ -33,7 +33,7 @@ public class LargestPrime {
         double duration;
         int result;
 
-        int number = 2100000000;
+        int number = 2100000001;
 
         // Method 1.
         startTime = System.nanoTime();
@@ -68,16 +68,14 @@ public class LargestPrime {
     }
 
     public static int getLargestPrime (int number) {
-        // Numbers before 3 don't have prime divisors.
-        if (number <= 3) return -1;
+        // Numbers before 1 don't have prime divisors.
+        if (number <= 1) return -1;
 
         int checkNumber = number;
         int maxPrimeDivisor = -1;
-        ArrayList<Integer> primeDivisors = new ArrayList<Integer>();
 
         while (checkNumber > maxPrimeDivisor) {
             if (checkNumber % 2 == 0) {
-                primeDivisors.add(2);
                 checkNumber /= 2;
                 maxPrimeDivisor = 2;
                 continue;
@@ -85,7 +83,6 @@ public class LargestPrime {
 
             for (int i = 3; i <= checkNumber; i += 2) {
                 if (checkNumber % i == 0) {
-                    primeDivisors.add(i);
                     checkNumber /= i;
                     maxPrimeDivisor = i;
                     break;
@@ -93,25 +90,21 @@ public class LargestPrime {
             }
         }
 
-//        System.out.println("Divisors: " + primeDivisors);
-
-        return (maxPrimeDivisor == number) ? -1 : maxPrimeDivisor;
+        return maxPrimeDivisor;
     }
 
     public static int getLargestPrime2 (int number) {
         // Numbers before 3 don't have prime divisors.
-        if (number <= 3) return -1;
+        if (number <= 1) return -1;
 
         int checkNumber = number;
         int maxPrimeDivisor = -1;
         int divisor = 2;
-        ArrayList<Integer> primeDivisors = new ArrayList<Integer>();
 
         if (checkNumber % 2 == 0) maxPrimeDivisor = 2;
 
         while (checkNumber % 2 == 0) {
             checkNumber /= divisor;
-            primeDivisors.add(divisor);
         }
 
         divisor = 3;
@@ -120,16 +113,13 @@ public class LargestPrime {
             if (checkNumber % divisor == 0) {
                 checkNumber /= divisor;
                 maxPrimeDivisor = divisor;
-                primeDivisors.add(divisor);
                 continue;
             }
 
             divisor += 2;
         }
 
-//        System.out.println("Divisors: " + primeDivisors);
-
-        return (maxPrimeDivisor == number) ? -1 : maxPrimeDivisor;
+        return maxPrimeDivisor;
     }
 
     public static int getLargestPrime3(int number){ // number = 21
