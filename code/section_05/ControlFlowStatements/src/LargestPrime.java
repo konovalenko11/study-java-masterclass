@@ -142,7 +142,7 @@ public class LargestPrime {
     }
 
     public static ArrayList<Integer> getPrimeNumbers (int number) {
-        ArrayList<Integer> primeNumbers = new ArrayList<Integer>();
+        ArrayList<Integer> primeNumbers = new ArrayList<>();
 
         // Numbers less than 1 don't have prime numbers.
         if (number <= 1) return primeNumbers;
