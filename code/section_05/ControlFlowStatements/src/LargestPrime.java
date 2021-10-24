@@ -33,11 +33,11 @@ public class LargestPrime {
         double duration;
         int result;
 
-        int number = 21000000;
+        int number = 2100000000;
 
         // Method 1.
         startTime = System.nanoTime();
-        result = getLargestPrime3(number);
+        result = getLargestPrime(number);
         endTime = System.nanoTime();
 
         duration = (double)(endTime - startTime) / 1_000_000;  // milliseconds.
@@ -57,7 +57,7 @@ public class LargestPrime {
 
         // Method 3. Jules.
         startTime = System.nanoTime();
-        result = getLargestPrime(number);
+        result = getLargestPrime3(number);
         endTime = System.nanoTime();
 
         duration = (double)(endTime - startTime) / 1_000_000;  // milliseconds.
