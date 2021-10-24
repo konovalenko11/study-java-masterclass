@@ -31,26 +31,124 @@ public class LargestPrime {
     public static void main(String[] args) {
         long startTime, endTime;
         double duration;
-        ArrayList<Integer> result;
+        int result;
 
-        int number = 1000000;
+        int number = 21000000;
 
-        // Method 1. Simple.
+        // Method 1.
         startTime = System.nanoTime();
-        result = getPrimeNumbers(number);
+        result = getLargestPrime3(number);
         endTime = System.nanoTime();
 
         duration = (double)(endTime - startTime) / 1_000_000;  // milliseconds.
 
-        System.out.printf("Result: [%s] - %s\n", result.size(), result);
+        System.out.printf("Result: %s\n", result);
+        System.out.println("Duration: " + duration + " ms");
+
+        // Method 2.
+        startTime = System.nanoTime();
+        result = getLargestPrime2(number);
+        endTime = System.nanoTime();
+
+        duration = (double)(endTime - startTime) / 1_000_000;  // milliseconds.
+
+        System.out.printf("Result: %s\n", result);
+        System.out.println("Duration: " + duration + " ms");
+
+        // Method 3. Jules.
+        startTime = System.nanoTime();
+        result = getLargestPrime(number);
+        endTime = System.nanoTime();
+
+        duration = (double)(endTime - startTime) / 1_000_000;  // milliseconds.
+
+        System.out.printf("Result: %s\n", result);
         System.out.println("Duration: " + duration + " ms");
 
     }
 
     public static int getLargestPrime (int number) {
-        if (number <= 1) return -1;
+        // Numbers before 3 don't have prime divisors.
+        if (number <= 3) return -1;
 
-        return -1;
+        int checkNumber = number;
+        int maxPrimeDivisor = -1;
+        ArrayList<Integer> primeDivisors = new ArrayList<Integer>();
+
+        while (checkNumber > maxPrimeDivisor) {
+            if (checkNumber % 2 == 0) {
+                primeDivisors.add(2);
+                checkNumber /= 2;
+                maxPrimeDivisor = 2;
+                continue;
+            }
+
+            for (int i = 3; i <= checkNumber; i += 2) {
+                if (checkNumber % i == 0) {
+                    primeDivisors.add(i);
+                    checkNumber /= i;
+                    maxPrimeDivisor = i;
+                    break;
+                }
+            }
+        }
+
+//        System.out.println("Divisors: " + primeDivisors);
+
+        return (maxPrimeDivisor == number) ? -1 : maxPrimeDivisor;
+    }
+
+    public static int getLargestPrime2 (int number) {
+        // Numbers before 3 don't have prime divisors.
+        if (number <= 3) return -1;
+
+        int checkNumber = number;
+        int maxPrimeDivisor = -1;
+        int divisor = 2;
+        ArrayList<Integer> primeDivisors = new ArrayList<Integer>();
+
+        if (checkNumber % 2 == 0) maxPrimeDivisor = 2;
+
+        while (checkNumber % 2 == 0) {
+            checkNumber /= divisor;
+            primeDivisors.add(divisor);
+        }
+
+        divisor = 3;
+
+        while (checkNumber >= divisor) {
+            if (checkNumber % divisor == 0) {
+                checkNumber /= divisor;
+                maxPrimeDivisor = divisor;
+                primeDivisors.add(divisor);
+                continue;
+            }
+
+            divisor += 2;
+        }
+
+//        System.out.println("Divisors: " + primeDivisors);
+
+        return (maxPrimeDivisor == number) ? -1 : maxPrimeDivisor;
+    }
+
+    public static int getLargestPrime3(int number){ // number = 21
+        if(number <= 1){
+            return -1;
+        }
+        for(int i=number-1; i>=2; i--){ // i=20, i = 19, ... i = 7
+
+            if(number%i == 0){ // false, false,true
+                number = i;// number = 7
+                if (getLargestPrime(number) < 2){
+                    return number;
+                } else return getLargestPrime(number);
+            }
+            if (number == i){ // false, false, true
+                return i; // 7
+            }
+        }
+        return number;
     }
 
     public static ArrayList<Integer> getPrimeNumbers (int number) {
