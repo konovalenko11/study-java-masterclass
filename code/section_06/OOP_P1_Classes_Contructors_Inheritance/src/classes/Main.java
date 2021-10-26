@@ -1,3 +1,5 @@
+package classes;
+
 public class Main {
     public static void main(String[] args) {
         Car porsche = new Car();
@@ -5,6 +7,5 @@ public class Main {
         porsche.setModel("Carrera");
 
         System.out.println(porsche.getModel());
-
     }
 }
