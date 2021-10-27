@@ -5,7 +5,7 @@
 // Create two additional methods
 // 1. To allow the customer to deposit funds (this should increment the balance field).
 // 2. To allow the customer to withdraw funds. This should deduct from the balance field,
-// but not allow the withdrawal to complete if their are insufficient funds.
+// but not allow the withdrawal to complete if there are insufficient funds.
 // You will want to create various code in the Main class (the one created by IntelliJ) to
 // confirm your code is working.
 // Add some System.out.println's in the two methods above as well.
@@ -31,6 +31,9 @@ public class Main {
         BankAccount bankAccount1 = new BankAccount("555", 25,
                 "aaa", "aaa@email.com",
                 "(555)444-33-22");
+
+        BankAccount bankAccount2 = new BankAccount("Kevin",
+                "k@email.com", "+15432563454");
 
 
     }
